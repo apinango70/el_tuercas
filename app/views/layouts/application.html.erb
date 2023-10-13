@@ -11,6 +11,17 @@
   </head>
 
   <body>
+  
+  <!--Notificaciones del sistema-->
+    <% if notice %>
+      <p class="alert alert-success"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+
+    <!--Renderizado de las páginas-->
     <%= yield %>
+
   </body>
 </html>

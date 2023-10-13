@@ -70,3 +70,7 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "devise", "~> 4.9"
+gem "annotate", "~> 3.2"
+gem "faker", "~> 3.2"
