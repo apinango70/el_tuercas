@@ -27,11 +27,10 @@ class User < ApplicationRecord
   enum role: {  user: 'user',
                 admin: 'admin',
                 administrative: 'administrative',
-  }, _default: 'client'
+  }, _default: 'user'
   
   # Validaciones de campos
   validates :username, presence: { message: "Username field cannot be blank" }, uniqueness: { message: "Username is already in use" }
-  validates :role, presence: { message: "Role field cannot be blank" }
   validates :nombre, presence: { message: "Nombre field cannot be blank" }
   validates :apellido, presence: { message: "Apellido field cannot be blank" }
   validates :telefono, presence: { message: "Telefono field cannot be blank" }
