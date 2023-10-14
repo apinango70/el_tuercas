@@ -31,10 +31,11 @@
     <%= form.text_field :ano %>
   </div>
 
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
+  <!--Collection para asignar un cliente al vehículo-->
+<div>
+  <%= form.label :user_id, style: "display: block" %>
+  <%= form.collection_select :user_id, User.all, :id, :nombre_completo, { include_blank: "Selecciona un cliente" } %>
+</div>
 
   <div>
     <%= form.submit %>

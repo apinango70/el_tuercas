@@ -3,9 +3,6 @@
 # rails runner 'load(File.join(Rails.root, "db", "seeds", "rb", "clientes.rb"))'
 puts 'Creando 10 usuarios...'
 
- 
- 
-
 # Crea 10 clientes con datos ficticios
 10.times do
     email = Faker::Internet.unique.email

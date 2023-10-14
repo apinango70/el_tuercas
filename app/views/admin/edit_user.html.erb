@@ -2,7 +2,7 @@
 
 <div class="container">
   <div class="row justify-content-center mt-5">
-    <div class="col-lg-8 col-md-6 col-sm-6">
+    <div class="col-lg-12 col-md-6 col-sm-6">
       <div class="card shadow">
         <div class="card-title text-center border-bottom">
           <h2 class="p-3">Edit user</h2>
@@ -11,7 +11,7 @@
             <form>
               <% @users.each do |user| %>
                 <%= form_for(user, url: admin_path(user), remote: true, method: :patch) do |f| %>
-                  <p><%= f.text_field :email %> - <%= f.text_field :username %> - <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> - <%= f.submit "Update", class: "btn btn-success" %></p>
+                  <p><%= f.text_field :email %> - <%= f.text_field :nombre %> - <%= f.text_field :apellido %> - <%= f.select(:role, User.roles.keys.map { |w| [w.humanize, w] }) %> - <%= f.submit "Update", class: "btn btn-success" %></p>
                 <% end %>
               <% end %>
             </div>

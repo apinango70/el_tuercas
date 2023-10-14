@@ -13,10 +13,13 @@ class VehiculosController < ApplicationController
   # GET /vehiculos/new
   def new
     @vehiculo = Vehiculo.new
+    #Para mostrar los usuarios en el select
+    @usuarios = User.all
   end
 
   # GET /vehiculos/1/edit
   def edit
+    @usuarios = User.all
   end
 
   # POST /vehiculos or /vehiculos.json

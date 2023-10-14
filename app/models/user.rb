@@ -36,5 +36,12 @@ class User < ApplicationRecord
   validates :telefono, presence: { message: "Telefono field cannot be blank" }
   validates :direccion, presence: { message: "Direccion field cannot be blank" }
 
-
+ 
+    def nombre_completo
+      "#{nombre} #{apellido}"
+    end
+ 
+    #relaciones
+    has_many :vehiculos, dependent: :destroy
+    
 end

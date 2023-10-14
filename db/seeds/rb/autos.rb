@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+
+
 # rails runner 'load(File.join(Rails.root, "db", "seeds", "rb", "autos.rb"))'
 puts 'Importando 10 autos...'
 
