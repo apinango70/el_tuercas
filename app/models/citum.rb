@@ -1,0 +1,2 @@
+class Citum < ApplicationRecord
+end
