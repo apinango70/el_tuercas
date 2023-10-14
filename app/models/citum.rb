@@ -8,7 +8,11 @@
 #  updated_at :datetime         not null
 #
 class Citum < ApplicationRecord
-    belongs_to :cliente
-    belongs_to :vehiculo
+    #relaciones
+    has_many :vehiculos, dependent: :destroy
+
+    #validaciones
+    validates :fecha, presence: { message: "Fecha field cannot be blank" }
+    
   end
  

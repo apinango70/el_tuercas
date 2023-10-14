@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'admin/create_user'
   get 'admin/edit_user'
-  
+  get 'pages/index'
+
   resources :vehiculos
   
   root 'vehiculos#index'

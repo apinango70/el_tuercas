@@ -12,5 +12,20 @@
 #  updated_at :datetime         not null
 #
 class Vehiculo < ApplicationRecord
+
+  #relaciones
   belongs_to :user
+  belongs_to :citum 
+  has_many :servicios, dependent: :destroy
+  has_many :vehiculo_servicios, dependent: :destroy
+  has_many :servicios, through: :vehiculo_servicios
+  accepts_nested_attributes_for :citum
+  # Validaciones de campos
+  validates :patente, presence: { message: "Patente field cannot be blank" }, uniqueness: { message: "Patente is already in use" }
+  validates :marca, presence: { message: "Marca field cannot be blank" }
+  validates :modelo, presence: { message: "Modelo field cannot be blank" }
+  validates :ano, presence: { message: "Año field cannot be blank" }
+
+
+
 end

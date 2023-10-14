@@ -3,7 +3,8 @@ class VehiculosController < ApplicationController
 
   # GET /vehiculos or /vehiculos.json
   def index
-    @vehiculos = Vehiculo.all
+    @vehiculos = Vehiculo.includes(:citum).all
+
   end
 
   # GET /vehiculos/1 or /vehiculos/1.json
@@ -15,11 +16,13 @@ class VehiculosController < ApplicationController
     @vehiculo = Vehiculo.new
     #Para mostrar los usuarios en el select
     @usuarios = User.all
+    @vehiculo.build_citum
   end
 
   # GET /vehiculos/1/edit
   def edit
     @usuarios = User.all
+    @vehiculo = Vehiculo.includes(:citum).find(params[:id])
   end
 
   # POST /vehiculos or /vehiculos.json
@@ -39,6 +42,8 @@ class VehiculosController < ApplicationController
 
   # PATCH/PUT /vehiculos/1 or /vehiculos/1.json
   def update
+    puts "Params: #{params.inspect}"
+  @vehiculo = Vehiculo.find(params[:id])
     respond_to do |format|
       if @vehiculo.update(vehiculo_params)
         format.html { redirect_to vehiculo_url(@vehiculo), notice: "Vehiculo was successfully updated." }
@@ -68,6 +73,8 @@ class VehiculosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vehiculo_params
-      params.require(:vehiculo).permit(:patente, :marca, :modelo, :ano, :user_id)
+      params.require(:vehiculo).permit(:patente, :marca, :modelo, :ano, :user_id, citum_attributes: [:fecha, :id])
     end
+    
+    
 end

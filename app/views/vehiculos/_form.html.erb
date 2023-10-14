@@ -31,6 +31,16 @@
     <%= form.text_field :ano %>
   </div>
 
+ 
+
+  <div class="field">
+    <%= form.fields_for :citum_attributes do |citum_fields| %>
+      <%= citum_fields.label :fecha, "Fecha de Cita" %>
+      <%= citum_fields.date_field :fecha, value: @vehiculo.citum&.fecha.to_s %>
+    <% end %>
+  </div>
+
+ 
   <!--Collection para asignar un cliente al vehículo-->
 <div>
   <%= form.label :user_id, style: "display: block" %>

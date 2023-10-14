@@ -11,15 +11,17 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :tipo, style: "display: block" %>
-    <%= form.text_field :tipo %>
-  </div>
+<div>
+  <%= form.label :tipo, style: "display: block" %>
+  <%= form.select :tipo, Servicio.tipos.keys.map { |tipo| [tipo.humanize, tipo] }, {}, { include_blank: "Selecciona un tipo de servicio" } %>
+</div>
 
-  <div>
-    <%= form.label :estado, style: "display: block" %>
-    <%= form.text_field :estado %>
-  </div>
+<div>
+  <%= form.label :estado, style: "display: block" %>
+  <%= form.select :estado, Servicio.estados.keys.map { |estado| [estado.humanize, estado] }, {}, { include_blank: "Selecciona un estado" } %>
+</div>
+
+
 
   <div>
     <%= form.label :piezas, style: "display: block" %>

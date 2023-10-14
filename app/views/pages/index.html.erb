@@ -1,2 +1,17 @@
-<h1>Pages#index</h1>
-<p>Find me in app/views/pages/index.html.erb</p>
+<h1>Listado de Vehículos</h1>
+<ul>
+  <% @vehiculos.each do |vehiculo| %>
+    <li>
+      <strong>Cliente:</strong> <%= vehiculo.user.nombre %><br>
+      <strong>Tipo de Servicio:</strong> <%= vehiculo.tipo_servicio %><br>
+      <strong>Fecha de Cita:</strong> <%= vehiculo.citas.last.fecha_y_hora %><br>
+      <strong>Estado de Reparación:</strong> <%= vehiculo.servicios.last.estado.humanize %><br>
+      <strong>Acciones:</strong>
+      <% if vehiculo.servicios.last.en_progreso? %>
+        <%= link_to "Completar Reparación", completar_reparacion_path(vehiculo.servicios.last), method: :put %>
+      <% else %>
+        <%= link_to "Marcar como En Progreso", en_progreso_reparacion_path(vehiculo.servicios.last), method: :put %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

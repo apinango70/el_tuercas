@@ -24,4 +24,11 @@
     <%= vehiculo.user.nombre %>, <%= vehiculo.user.apellido %>
   </p>
 
+  <% if vehiculo.citum.present? %>
+    <p>
+      <strong>Fecha de Cita:</strong>
+      <%= vehiculo.citum.fecha.strftime("%Y-%m-%d") %>
+    </p>
+  <% end %>
+
 </div>

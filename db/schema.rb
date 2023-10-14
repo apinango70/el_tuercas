@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_14_021709) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_14_034051) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_021709) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehiculo_servicios", force: :cascade do |t|
+    t.bigint "vehiculo_id", null: false
+    t.bigint "servicio_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["servicio_id"], name: "index_vehiculo_servicios_on_servicio_id"
+    t.index ["vehiculo_id"], name: "index_vehiculo_servicios_on_vehiculo_id"
+  end
+
   create_table "vehiculos", force: :cascade do |t|
     t.string "patente"
     t.string "marca"
@@ -57,9 +66,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_14_021709) do
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "citum_id"
+    t.index ["citum_id"], name: "index_vehiculos_on_citum_id"
     t.index ["user_id"], name: "index_vehiculos_on_user_id"
   end
 
   add_foreign_key "servicios", "vehiculos"
+  add_foreign_key "vehiculo_servicios", "servicios"
+  add_foreign_key "vehiculo_servicios", "vehiculos"
+  add_foreign_key "vehiculos", "cita"
   add_foreign_key "vehiculos", "users"
 end
