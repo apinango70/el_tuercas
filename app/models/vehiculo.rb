@@ -27,7 +27,7 @@ class Vehiculo < ApplicationRecord
   validates :marca, presence: { message: "Marca field cannot be blank" }
   validates :modelo, presence: { message: "Modelo field cannot be blank" }
   validates :ano, presence: { message: "Año field cannot be blank" }
-  validates :servicios, presence: true
+ 
 
 
 end

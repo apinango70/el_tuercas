@@ -22,7 +22,7 @@ class Servicio < ApplicationRecord
   validates :tipo, presence: { message: "Tipo field cannot be blank" }
   validates :estado, presence: { message: "Estado field cannot be blank" }
   validates :piezas, presence: { message: "Piezas field cannot be blank" }
-   validates :fecha_entrega, presence: true, allow_blank: false
+ 
 
   enum tipo: {
     mantenimiento: 'Mantenimiento',

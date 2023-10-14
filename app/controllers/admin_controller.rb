@@ -4,7 +4,7 @@ class AdminController < ApplicationController
   before_action :authorize_admin!
 
   def edit_user
-    @users = User.order(:id)
+    @pagy, @users = pagy(User.order(created_at: :desc), items: 5) # Paginación
   end
   
   def create

@@ -83,7 +83,7 @@ class VehiculosController < ApplicationController
           :ano, 
           :user_id, 
           citum_attributes: [:fecha, :id], 
-          servicios_attributes: [:id, :tipo, :estado, :piezas, :fecha_entrega])
+          servicios_attributes: [:tipo, :estado, :piezas, :fecha_entrega])
     end
     
     
