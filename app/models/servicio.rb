@@ -19,9 +19,10 @@ class Servicio < ApplicationRecord
   has_many :vehiculos, through: :vehiculo_servicios
 
   #validaciones
-  validates :tipo, presence: { message: "Tipo field cannot be blank" }
-  validates :estado, presence: { message: "Estado field cannot be blank" }
-  validates :piezas, presence: { message: "Piezas field cannot be blank" }
+  validates :tipo, presence: true
+  validates :estado, presence: true
+  validates :piezas, presence: true
+  validates :fecha_entrega, presence: true
  
 
   enum tipo: {

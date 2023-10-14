@@ -1,4 +1,6 @@
-<table class="table table-bordered">
+<div class="col-lg-8 mx-auto">
+<div class="table-responsive">
+  <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
       <th scope="col">#</th>
@@ -8,6 +10,7 @@
       <th scope="col">Año</th>
       <th scope="col">Cliente</th>
       <th scope="col">Fecha de Cita</th>
+      <th scope="col">Acción</th>
     </tr>
   </thead>
   <tbody>
@@ -23,7 +26,11 @@
           <%= vehiculo.citum.fecha.strftime("%Y-%m-%d") %>
         <% end %>
       </td>
+      <td><%= link_to "Show this vehiculo", vehiculo %></td>
     </tr>
   </tbody>
 </table>
+</div>
+</div>
+
 

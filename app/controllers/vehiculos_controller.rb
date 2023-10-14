@@ -1,11 +1,10 @@
 class VehiculosController < ApplicationController
   before_action :set_vehiculo, only: %i[ show edit update destroy ]
-
+  before_action :authenticate_user! # Autenticación de usuarios
+  
   # GET /vehiculos or /vehiculos.json
   def index
     @pagy, @vehiculos = pagy(Vehiculo.order(created_at: :desc), items: 5) # Paginación
-     
-
   end
 
   # GET /vehiculos/1 or /vehiculos/1.json
@@ -26,6 +25,7 @@ class VehiculosController < ApplicationController
   def edit
     @usuarios = User.all
     @vehiculo = Vehiculo.includes(:citum).find(params[:id])
+    @vehiculo.servicios.build if @vehiculo.servicios.empty?
   end
 
   # POST /vehiculos or /vehiculos.json

@@ -25,12 +25,12 @@
 
   <div>
     <%= form.label :piezas, style: "display: block" %>
-    <%= form.text_field :piezas %>
+    <%= form.text_field :piezas, required: true %>
   </div>
 
   <div>
     <%= form.label :fecha_entrega, style: "display: block" %>
-    <%= form.date_field :fecha_entrega %>
+    <%= form.date_field :fecha_entrega, required: true %>
   </div>
 
 <div class="field">
