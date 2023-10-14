@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   # Enum de roles
-  enum role: {  user: 'client',
+  enum role: {  user: 'user',
                 admin: 'admin',
                 administrative: 'administrative',
   }, _default: 'client'
@@ -17,6 +17,6 @@ class User < ApplicationRecord
   validates :apellido, presence: { message: "Apellido field cannot be blank" }
   validates :telefono, presence: { message: "Telefono field cannot be blank" }
   validates :direccion, presence: { message: "Direccion field cannot be blank" }
-  
+
 
 end
