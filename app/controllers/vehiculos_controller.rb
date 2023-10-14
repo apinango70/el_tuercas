@@ -47,6 +47,9 @@ class VehiculosController < ApplicationController
   def update
     puts "Params: #{params.inspect}"
   @vehiculo = Vehiculo.find(params[:id])
+      # Puts para imprimir los parámetros
+       
+      puts "Servicios: #{params[:vehiculo][:servicios_attributes].inspect}"
     respond_to do |format|
       if @vehiculo.update(vehiculo_params)
         format.html { redirect_to vehiculo_url(@vehiculo), notice: "Vehiculo was successfully updated." }
@@ -77,14 +80,13 @@ class VehiculosController < ApplicationController
     # Only allow a list of trusted parameters through.
     def vehiculo_params
       params.require(:vehiculo).permit(
-          :patente, 
-          :marca, 
-          :modelo, 
-          :ano, 
-          :user_id, 
-          citum_attributes: [:fecha, :id], 
-          servicios_attributes: [:tipo, :estado, :piezas, :fecha_entrega])
+        :patente, :marca, :modelo, :ano, :user_id,
+        citum_attributes: [:fecha],
+        servicios_attributes: [:id, :tipo, :estado, :piezas, :fecha_entrega, :_destroy]
+      )
     end
+    
+ 
     
     
 end
