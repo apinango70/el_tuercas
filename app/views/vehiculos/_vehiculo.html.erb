@@ -1,34 +1,29 @@
-<div id="<%= dom_id vehiculo %>">
-  <p>
-    <strong>Patente:</strong>
-    <%= vehiculo.patente %>
-  </p>
+<table class="table table-bordered">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Patente</th>
+      <th scope="col">Marca</th>
+      <th scope="col">Modelo</th>
+      <th scope="col">Año</th>
+      <th scope="col">Cliente</th>
+      <th scope="col">Fecha de Cita</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td><%= vehiculo.patente %></td>
+      <td><%= vehiculo.marca %></td>
+      <td><%= vehiculo.modelo %></td>
+      <td><%= vehiculo.ano %></td>
+      <td><%= vehiculo.user.nombre %>, <%= vehiculo.user.apellido %></td>
+      <td>
+        <% if vehiculo.citum.present? %>
+          <%= vehiculo.citum.fecha.strftime("%Y-%m-%d") %>
+        <% end %>
+      </td>
+    </tr>
+  </tbody>
+</table>
 
-  <p>
-    <strong>Marca:</strong>
-    <%= vehiculo.marca %>
-  </p>
-
-  <p>
-    <strong>Modelo:</strong>
-    <%= vehiculo.modelo %>
-  </p>
-
-  <p>
-    <strong>Ano:</strong>
-    <%= vehiculo.ano %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= vehiculo.user.nombre %>, <%= vehiculo.user.apellido %>
-  </p>
-
-  <% if vehiculo.citum.present? %>
-    <p>
-      <strong>Fecha de Cita:</strong>
-      <%= vehiculo.citum.fecha.strftime("%Y-%m-%d") %>
-    </p>
-  <% end %>
-
-</div>

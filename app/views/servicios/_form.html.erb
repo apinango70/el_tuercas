@@ -33,10 +33,11 @@
     <%= form.date_field :fecha_entrega %>
   </div>
 
-  <div>
-    <%= form.label :vehiculo_id, style: "display: block" %>
-    <%= form.text_field :vehiculo_id %>
-  </div>
+<div class="field">
+  <%= form.label :vehiculo_id, "Selecciona un Vehículo" %>
+  <%= form.collection_select :vehiculo_id, Vehiculo.all, :id, :patente, { prompt: "Selecciona un vehículo" } %>
+</div>
+
 
   <div>
     <%= form.submit %>

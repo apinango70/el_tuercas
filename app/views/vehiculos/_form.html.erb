@@ -10,44 +10,81 @@
       </ul>
     </div>
   <% end %>
+<div class="container">
+  <div class="row justify-content-center mt-5">
+    <div class="col-lg-4 col-md-6 col-sm-6">
+      <div class="card shadow">
+        <div class="card-title text-center border-bottom">
+          <h2 class="p-3">Crear vehículo</h2>
+        </div>
+        <div class="card-body">
+          <form>
+            <div>
+              <%= form.label :patente, style: "display: block" %>
+              <%= form.text_field :patente, class:'form-control' %>
+            </div>
 
-  <div>
-    <%= form.label :patente, style: "display: block" %>
-    <%= form.text_field :patente %>
+            <div>
+              <%= form.label :marca, style: "display: block" %>
+              <%= form.text_field :marca, class:'form-control' %>
+            </div>
+
+            <div>
+              <%= form.label :modelo, style: "display: block" %>
+              <%= form.text_field :modelo, class:'form-control' %>
+            </div>
+
+            <div>
+              <%= form.label :ano, style: "display: block" %>
+              <%= form.text_field :ano, class:'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= form.fields_for :citum_attributes do |citum_fields| %>
+                <%= citum_fields.label :fecha, "Fecha de Cita" %>
+                <%= citum_fields.date_field :fecha, value: @vehiculo.citum&.fecha.to_s, class:'form-control' %>
+              <% end %>
+            </div>
+
+          
+            <!--Collection para asignar un cliente al vehículo-->
+          <div>
+            <%= form.label :user_id, style: "display: block" %>
+            <%= form.collection_select :user_id, User.all, :id, :nombre_completo, { include_blank: "Selecciona un cliente" }, class:'form-control' %>
+          </div>
+
+          
+          
+          <%= form.fields_for :servicios do |servicio_form| %>
+            <!-- Campos de Servicio -->
+            <div class="field">
+              <%= servicio_form.label :tipo %>
+              <%= servicio_form.select :tipo, Servicio.tipos.keys.map { |tipo| [tipo.humanize, tipo] }, class:'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= servicio_form.label :estado %>
+              <%= servicio_form.select :estado, Servicio.estados.keys.map { |estado| [estado.humanize, estado] }, class:'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= servicio_form.label :piezas %>
+              <%= servicio_form.text_field :piezas, class:'form-control' %>
+            </div>
+
+            <div class="field">
+              <%= servicio_form.label :fecha_entrega %>
+              <%= servicio_form.date_field :fecha_entrega, class:'form-control' %>
+            </div>
+          <% end %>
+
+            <div class="mb-4">
+              <%= form.submit "Crear", class:"btn btn-success" %>
+            </div>
+          <% end %>
+         </form>
+        </div>
+      </div>
+    </div>
   </div>
-
-  <div>
-    <%= form.label :marca, style: "display: block" %>
-    <%= form.text_field :marca %>
-  </div>
-
-  <div>
-    <%= form.label :modelo, style: "display: block" %>
-    <%= form.text_field :modelo %>
-  </div>
-
-  <div>
-    <%= form.label :ano, style: "display: block" %>
-    <%= form.text_field :ano %>
-  </div>
-
- 
-
-  <div class="field">
-    <%= form.fields_for :citum_attributes do |citum_fields| %>
-      <%= citum_fields.label :fecha, "Fecha de Cita" %>
-      <%= citum_fields.date_field :fecha, value: @vehiculo.citum&.fecha.to_s %>
-    <% end %>
-  </div>
-
- 
-  <!--Collection para asignar un cliente al vehículo-->
-<div>
-  <%= form.label :user_id, style: "display: block" %>
-  <%= form.collection_select :user_id, User.all, :id, :nombre_completo, { include_blank: "Selecciona un cliente" } %>
-</div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+</div> 

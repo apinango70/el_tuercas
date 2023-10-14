@@ -3,7 +3,8 @@ class VehiculosController < ApplicationController
 
   # GET /vehiculos or /vehiculos.json
   def index
-    @vehiculos = Vehiculo.includes(:citum).all
+    @pagy, @vehiculos = pagy(Vehiculo.order(created_at: :desc), items: 5) # Paginación
+     
 
   end
 
@@ -14,9 +15,11 @@ class VehiculosController < ApplicationController
   # GET /vehiculos/new
   def new
     @vehiculo = Vehiculo.new
-    #Para mostrar los usuarios en el select
+    #Muestra los usuarios en el select
     @usuarios = User.all
     @vehiculo.build_citum
+    #Muestra los servicios en el select
+    @vehiculo.servicios.build 
   end
 
   # GET /vehiculos/1/edit
@@ -73,7 +76,14 @@ class VehiculosController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def vehiculo_params
-      params.require(:vehiculo).permit(:patente, :marca, :modelo, :ano, :user_id, citum_attributes: [:fecha, :id])
+      params.require(:vehiculo).permit(
+          :patente, 
+          :marca, 
+          :modelo, 
+          :ano, 
+          :user_id, 
+          citum_attributes: [:fecha, :id], 
+          servicios_attributes: [:id, :tipo, :estado, :piezas, :fecha_entrega])
     end
     
     
