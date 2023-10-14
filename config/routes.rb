@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
+  resources :servicios
 
   get 'admin/create_user'
   get 'admin/edit_user'
   
   resources :vehiculos
   
-  root 'pages#index'
+  root 'vehiculos#index'
   
   devise_for :users, controllers: {
     sessions: 'users/sessions',

@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  tipo: MyString
+  estado: MyString
+  piezas: MyString
+  fecha_entrega: 2023-10-13
+  vehiculo: one
+
+two:
+  tipo: MyString
+  estado: MyString
+  piezas: MyString
+  fecha_entrega: 2023-10-13
+  vehiculo: two

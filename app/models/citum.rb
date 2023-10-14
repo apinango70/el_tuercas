@@ -8,4 +8,7 @@
 #  updated_at :datetime         not null
 #
 class Citum < ApplicationRecord
-end
+    belongs_to :cliente
+    belongs_to :vehiculo
+  end
+ 
